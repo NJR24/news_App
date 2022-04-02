@@ -38,7 +38,7 @@ class _HomeState extends State<Home> {
         ),
         
       ),
-      body: Container(
+      body: SafeArea(
         child: FutureBuilder<List<Article>?>(
           future: ApiServices().getNews(
             q: "tesla",
@@ -48,7 +48,7 @@ class _HomeState extends State<Home> {
           ),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             } else {
               return ListView.builder(
                 itemBuilder: ((context, index) {
